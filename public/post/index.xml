@@ -11,10 +11,10 @@
     
     <item>
       <title>Using Hugo</title>
-      <link>http://mads.ninja/post/using-hugo/</link>
+      <link>http://mads.ninja/2015/07/12/using-hugo</link>
       <pubDate>Sun, 12 Jul 2015 16:30:53 +0000</pubDate>
       
-      <guid>http://mads.ninja/post/using-hugo/</guid>
+      <guid>http://mads.ninja/2015/07/12/using-hugo</guid>
       <description>&lt;p&gt;##Background
 This is my first post written on my new, &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo-powered&lt;/a&gt; site. I had previously been using &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; for my blogging, but I decided before I got &lt;em&gt;too&lt;/em&gt; into things that I should consider switching to something else. The main reason for me was some concern around performance. I chose Jekyll not really realizing that there were competitors in the static-HTML-generation game. I knew that Jekyll was used for &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;, and I just assumed that was what got used everywhere.&lt;/p&gt;
 
@@ -46,10 +46,10 @@ Using Hugo was fairly straightforward. I already had a server running Nginx that
     
     <item>
       <title>PowerShell Reference Types And Value Types</title>
-      <link>http://mads.ninja/post/powershell-references/</link>
+      <link>http://mads.ninja/2015/06/26/powershell-reference-types-and-value-types</link>
       <pubDate>Fri, 26 Jun 2015 15:29:00 +0000</pubDate>
       
-      <guid>http://mads.ninja/post/powershell-references/</guid>
+      <guid>http://mads.ninja/2015/06/26/powershell-reference-types-and-value-types</guid>
       <description>&lt;p&gt;A coworker and I ran into something of an oddity yesterday that started the snowball rolling on some research digging into the guts of how PowerShell operates as a langauge. Let me say up front that, with as much as Microsoft is working to make PowerShell the de facto scripting language on Windows, it&amp;rsquo;s both surprising and frustrating how little is published in the way of official documentation. While there&amp;rsquo;s a lot of good stuff people are writing it&amp;rsquo;s always in blogs of Stack Overflow discussions. Microsoft doesn&amp;rsquo;t, at least at the time of this writing, have any official documentation like what I&amp;rsquo;d reference for &lt;a href=&#34;http://ruby-doc.org/core-2.2.1/&#34;&gt;Ruby&lt;/a&gt; or &lt;a href=&#34;http://perldoc.perl.org/perlapi.html&#34;&gt;Perl&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The behavior which kicked off our confusion was how PowerShell handles passing parameters to functions. Take this very simple example:&lt;/p&gt;
@@ -115,10 +115,10 @@ $number
     
     <item>
       <title>Error Installing Jekyll Gem: Can&#39;t Find Header Files</title>
-      <link>http://mads.ninja/post/ruby-error/</link>
+      <link>http://mads.ninja/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</link>
       <pubDate>Wed, 24 Jun 2015 11:35:00 +0000</pubDate>
       
-      <guid>http://mads.ninja/post/ruby-error/</guid>
+      <guid>http://mads.ninja/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</guid>
       <description>&lt;p&gt;As you may be able to tell at a quick glance, I &lt;em&gt;just&lt;/em&gt; configured this blog that I have running on a VPS I spun up bright and early this morning. One of the things I wanted to do was get nginx rolling on it and then install Jekyll to do a bit of blogging. While the nginx setup went incredibly smoothly, I started to run into a couple of hiccups when installing the Jekyll gem. Note that I&amp;rsquo;m doing this from a Debian 8 VM.&lt;/p&gt;
 
 &lt;p&gt;After installing Ruby, since Debian doesn&amp;rsquo;t have it by default, I ran the following:&lt;/p&gt;

@@ -11,10 +11,10 @@
     
     <item>
       <title>Using Hugo</title>
-      <link>http://mads.ninja/post/using-hugo/</link>
+      <link>http://mads.ninja/2015/07/12/using-hugo</link>
       <pubDate>Sun, 12 Jul 2015 16:30:53 +0000</pubDate>
       
-      <guid>http://mads.ninja/post/using-hugo/</guid>
+      <guid>http://mads.ninja/2015/07/12/using-hugo</guid>
       <description>&lt;p&gt;##Background
 This is my first post written on my new, &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo-powered&lt;/a&gt; site. I had previously been using &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; for my blogging, but I decided before I got &lt;em&gt;too&lt;/em&gt; into things that I should consider switching to something else. The main reason for me was some concern around performance. I chose Jekyll not really realizing that there were competitors in the static-HTML-generation game. I knew that Jekyll was used for &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;, and I just assumed that was what got used everywhere.&lt;/p&gt;
 
