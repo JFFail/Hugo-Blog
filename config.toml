@@ -1,6 +1,6 @@
-baseurl = "http://mads.ninja/"
+baseurl = "http://blog.awk.ninja/"
 languageCode = "en-us"
-title = "MADS Ninja"
+title = "Awk Ninja"
 theme = "hyde-x"
 MetaDataFormat = "toml"
 paginate = 10
@@ -16,7 +16,7 @@ paginate = 10
 [params]
     truncate = true
     defaultDescription = "John Fabry's Blog"
-    defaultKeywords = "John Fabry, John, Fabry, MADS"
+    defaultKeywords = "John Fabry, John, Fabry, Awk Ninja"
     theme = ".theme-base-0d"
     highlight = "github"
     tagline = "Keeping IT Real On The CLI"

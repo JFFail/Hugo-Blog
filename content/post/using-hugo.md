@@ -6,14 +6,14 @@ keywords = ["hugo, blogging, Go, software"]
 title = "Using Hugo"
 +++
 
-##Background
+## Background
 This is my first post written on my new, [Hugo-powered](http://gohugo.io/) site. I had previously been using [Jekyll](http://jekyllrb.com/) for my blogging, but I decided before I got *too* into things that I should consider switching to something else. The main reason for me was some concern around performance. I chose Jekyll not really realizing that there were competitors in the static-HTML-generation game. I knew that Jekyll was used for [GitHub Pages](https://pages.github.com/), and I just assumed that was what got used everywhere.
 
 Then I happened to see an article on using [VSCode](https://code.visualstudio.com/) to generate a Hugo site. Having never heard of Hugo, I dug into it a little and discovered that it's basically a Jekyll competitor written in Go rather than Ruby. This offers some advantages, the biggest of which is that it's a **lot** faster. While I love Ruby -- I think it's one of the most enjoyable programming languages to write in -- it's hard to deny that there can be some performance issues with large projects... just launch [Metasploit](http://www.metasploit.com/) and see how the wait time is.
 
 I did a bit of hunting to see what *else* was out there on top of Jekyll and Hugo. It turns out there are [quite a few options](http://www.sitepoint.com/6-static-blog-generators-arent-jekyll/). Looking into it, though, Hugo seems to be one most focused on performance. A few people with more dedication than me have done some [fairly exhaustive testing](http://fredrikloch.me/post/2014-08-12-Jekyll-and-its-alternatives-from-a-site-generation-point-of-view/) to confirm that while Jekyll may eventually start to lag with regard to build times for a site, Hugo crushes it... though newer versions are slightly slower than the old ones. As someone who can potentially blog quite frequently I didn't want to invest too much of my time and effort into a Jekyll site only to struggle with migrating the content to something else later on if I started to see performance issues.
 
-##Implementation
+## Implementation
 Using Hugo was fairly straightforward. I already had a server running Nginx that I wanted to use, so I just had to [download the binaries for Hugo](https://github.com/spf13/hugo/releases). I placed them in my `PATH` for the sake of sanity. I'll just have to keep an eye on their releases on GitHub to see when there are updates. Building a new Hugo site is stupidly easy. I just created a directory where I wanted to store everything and then used the following:
 
     hugo new site .

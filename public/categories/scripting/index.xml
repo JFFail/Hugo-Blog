@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scripting on MADS Ninja</title>
-    <link>http://mads.ninja/categories/scripting/</link>
-    <description>Recent content in Scripting on MADS Ninja</description>
+    <title>Scripting on Awk Ninja</title>
+    <link>http://blog.awk.ninja/categories/scripting/</link>
+    <description>Recent content in Scripting on Awk Ninja</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 26 Jun 2015 15:29:00 +0000</lastBuildDate>
-    <atom:link href="http://mads.ninja/categories/scripting/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.awk.ninja/categories/scripting/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>PowerShell Reference Types And Value Types</title>
-      <link>http://mads.ninja/2015/06/26/powershell-reference-types-and-value-types</link>
+      <link>http://blog.awk.ninja/2015/06/26/powershell-reference-types-and-value-types</link>
       <pubDate>Fri, 26 Jun 2015 15:29:00 +0000</pubDate>
       
-      <guid>http://mads.ninja/2015/06/26/powershell-reference-types-and-value-types</guid>
+      <guid>http://blog.awk.ninja/2015/06/26/powershell-reference-types-and-value-types</guid>
       <description>&lt;p&gt;A coworker and I ran into something of an oddity yesterday that started the snowball rolling on some research digging into the guts of how PowerShell operates as a langauge. Let me say up front that, with as much as Microsoft is working to make PowerShell the de facto scripting language on Windows, it&amp;rsquo;s both surprising and frustrating how little is published in the way of official documentation. While there&amp;rsquo;s a lot of good stuff people are writing it&amp;rsquo;s always in blogs of Stack Overflow discussions. Microsoft doesn&amp;rsquo;t, at least at the time of this writing, have any official documentation like what I&amp;rsquo;d reference for &lt;a href=&#34;http://ruby-doc.org/core-2.2.1/&#34;&gt;Ruby&lt;/a&gt; or &lt;a href=&#34;http://perldoc.perl.org/perlapi.html&#34;&gt;Perl&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The behavior which kicked off our confusion was how PowerShell handles passing parameters to functions. Take this very simple example:&lt;/p&gt;

@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MADS Ninja</title>
-    <link>http://mads.ninja/</link>
-    <description>Recent content on MADS Ninja</description>
+    <title>Awk Ninja</title>
+    <link>http://blog.awk.ninja/</link>
+    <description>Recent content on Awk Ninja</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Jul 2015 16:30:53 +0000</lastBuildDate>
-    <atom:link href="http://mads.ninja/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.awk.ninja/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Using Hugo</title>
-      <link>http://mads.ninja/2015/07/12/using-hugo</link>
+      <link>http://blog.awk.ninja/2015/07/12/using-hugo</link>
       <pubDate>Sun, 12 Jul 2015 16:30:53 +0000</pubDate>
       
-      <guid>http://mads.ninja/2015/07/12/using-hugo</guid>
-      <description>&lt;p&gt;##Background
-This is my first post written on my new, &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo-powered&lt;/a&gt; site. I had previously been using &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; for my blogging, but I decided before I got &lt;em&gt;too&lt;/em&gt; into things that I should consider switching to something else. The main reason for me was some concern around performance. I chose Jekyll not really realizing that there were competitors in the static-HTML-generation game. I knew that Jekyll was used for &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;, and I just assumed that was what got used everywhere.&lt;/p&gt;
+      <guid>http://blog.awk.ninja/2015/07/12/using-hugo</guid>
+      <description>
+
+&lt;h2 id=&#34;background:f289f7106c21a975bb9cbd3325d6b48b&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;This is my first post written on my new, &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo-powered&lt;/a&gt; site. I had previously been using &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; for my blogging, but I decided before I got &lt;em&gt;too&lt;/em&gt; into things that I should consider switching to something else. The main reason for me was some concern around performance. I chose Jekyll not really realizing that there were competitors in the static-HTML-generation game. I knew that Jekyll was used for &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;, and I just assumed that was what got used everywhere.&lt;/p&gt;
 
 &lt;p&gt;Then I happened to see an article on using &lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;VSCode&lt;/a&gt; to generate a Hugo site. Having never heard of Hugo, I dug into it a little and discovered that it&amp;rsquo;s basically a Jekyll competitor written in Go rather than Ruby. This offers some advantages, the biggest of which is that it&amp;rsquo;s a &lt;strong&gt;lot&lt;/strong&gt; faster. While I love Ruby &amp;ndash; I think it&amp;rsquo;s one of the most enjoyable programming languages to write in &amp;ndash; it&amp;rsquo;s hard to deny that there can be some performance issues with large projects&amp;hellip; just launch &lt;a href=&#34;http://www.metasploit.com/&#34;&gt;Metasploit&lt;/a&gt; and see how the wait time is.&lt;/p&gt;
 
 &lt;p&gt;I did a bit of hunting to see what &lt;em&gt;else&lt;/em&gt; was out there on top of Jekyll and Hugo. It turns out there are &lt;a href=&#34;http://www.sitepoint.com/6-static-blog-generators-arent-jekyll/&#34;&gt;quite a few options&lt;/a&gt;. Looking into it, though, Hugo seems to be one most focused on performance. A few people with more dedication than me have done some &lt;a href=&#34;http://fredrikloch.me/post/2014-08-12-Jekyll-and-its-alternatives-from-a-site-generation-point-of-view/&#34;&gt;fairly exhaustive testing&lt;/a&gt; to confirm that while Jekyll may eventually start to lag with regard to build times for a site, Hugo crushes it&amp;hellip; though newer versions are slightly slower than the old ones. As someone who can potentially blog quite frequently I didn&amp;rsquo;t want to invest too much of my time and effort into a Jekyll site only to struggle with migrating the content to something else later on if I started to see performance issues.&lt;/p&gt;
 
-&lt;p&gt;##Implementation
-Using Hugo was fairly straightforward. I already had a server running Nginx that I wanted to use, so I just had to &lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;download the binaries for Hugo&lt;/a&gt;. I placed them in my &lt;code&gt;PATH&lt;/code&gt; for the sake of sanity. I&amp;rsquo;ll just have to keep an eye on their releases on GitHub to see when there are updates. Building a new Hugo site is stupidly easy. I just created a directory where I wanted to store everything and then used the following:&lt;/p&gt;
+&lt;h2 id=&#34;implementation:f289f7106c21a975bb9cbd3325d6b48b&#34;&gt;Implementation&lt;/h2&gt;
+
+&lt;p&gt;Using Hugo was fairly straightforward. I already had a server running Nginx that I wanted to use, so I just had to &lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;download the binaries for Hugo&lt;/a&gt;. I placed them in my &lt;code&gt;PATH&lt;/code&gt; for the sake of sanity. I&amp;rsquo;ll just have to keep an eye on their releases on GitHub to see when there are updates. Building a new Hugo site is stupidly easy. I just created a directory where I wanted to store everything and then used the following:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;hugo new site .
 &lt;/code&gt;&lt;/pre&gt;
@@ -46,10 +50,10 @@ Using Hugo was fairly straightforward. I already had a server running Nginx that
     
     <item>
       <title>PowerShell Reference Types And Value Types</title>
-      <link>http://mads.ninja/2015/06/26/powershell-reference-types-and-value-types</link>
+      <link>http://blog.awk.ninja/2015/06/26/powershell-reference-types-and-value-types</link>
       <pubDate>Fri, 26 Jun 2015 15:29:00 +0000</pubDate>
       
-      <guid>http://mads.ninja/2015/06/26/powershell-reference-types-and-value-types</guid>
+      <guid>http://blog.awk.ninja/2015/06/26/powershell-reference-types-and-value-types</guid>
       <description>&lt;p&gt;A coworker and I ran into something of an oddity yesterday that started the snowball rolling on some research digging into the guts of how PowerShell operates as a langauge. Let me say up front that, with as much as Microsoft is working to make PowerShell the de facto scripting language on Windows, it&amp;rsquo;s both surprising and frustrating how little is published in the way of official documentation. While there&amp;rsquo;s a lot of good stuff people are writing it&amp;rsquo;s always in blogs of Stack Overflow discussions. Microsoft doesn&amp;rsquo;t, at least at the time of this writing, have any official documentation like what I&amp;rsquo;d reference for &lt;a href=&#34;http://ruby-doc.org/core-2.2.1/&#34;&gt;Ruby&lt;/a&gt; or &lt;a href=&#34;http://perldoc.perl.org/perlapi.html&#34;&gt;Perl&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The behavior which kicked off our confusion was how PowerShell handles passing parameters to functions. Take this very simple example:&lt;/p&gt;
@@ -115,10 +119,10 @@ $number
     
     <item>
       <title>Error Installing Jekyll Gem: Can&#39;t Find Header Files</title>
-      <link>http://mads.ninja/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</link>
+      <link>http://blog.awk.ninja/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</link>
       <pubDate>Wed, 24 Jun 2015 11:35:00 +0000</pubDate>
       
-      <guid>http://mads.ninja/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</guid>
+      <guid>http://blog.awk.ninja/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</guid>
       <description>&lt;p&gt;As you may be able to tell at a quick glance, I &lt;em&gt;just&lt;/em&gt; configured this blog that I have running on a VPS I spun up bright and early this morning. One of the things I wanted to do was get nginx rolling on it and then install Jekyll to do a bit of blogging. While the nginx setup went incredibly smoothly, I started to run into a couple of hiccups when installing the Jekyll gem. Note that I&amp;rsquo;m doing this from a Debian 8 VM.&lt;/p&gt;
 
 &lt;p&gt;After installing Ruby, since Debian doesn&amp;rsquo;t have it by default, I ran the following:&lt;/p&gt;
