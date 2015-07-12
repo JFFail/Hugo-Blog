@@ -1,0 +1,25 @@
+baseurl = "http://mads.ninja/"
+languageCode = "en-us"
+title = "MADS Ninja"
+theme = "hyde-x"
+MetaDataFormat = "toml"
+paginate = 10
+
+[author]
+    name = "John Fabry"
+
+[indexes]
+    category = "categories"
+
+[params]
+    truncate = true
+    defaultDescription = "John Fabry's Blog"
+    defaultKeywords = "John Fabry, John, Fabry, MADS"
+    theme = ".theme-base-0d"
+    highlight = "github"
+    tagline = "Keeping IT Real On The CLI"
+    gravatarHash = "78923244486184ab65247b98806e32f5  -"
+    github = "https://github.com/jffail"
+    linkedin = "https://www.linkedin.com/in/johnfabry"
+    twitter = "https://twitter.com/consoleaccess"
+    googleplus = "http://plus.google.com/+JohnFabry404"

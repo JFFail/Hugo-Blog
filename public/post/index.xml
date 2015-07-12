@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on MADS Ninja</title>
+    <link>http://mads.ninja/post/</link>
+    <description>Recent content in Posts on MADS Ninja</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Jul 2015 16:30:53 +0000</lastBuildDate>
+    <atom:link href="http://mads.ninja/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Using Hugo</title>
+      <link>http://mads.ninja/post/using-hugo/</link>
+      <pubDate>Sun, 12 Jul 2015 16:30:53 +0000</pubDate>
+      
+      <guid>http://mads.ninja/post/using-hugo/</guid>
+      <description>&lt;p&gt;##Background
+This is my first post written on my new, &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo-powered&lt;/a&gt; site. I had previously been using &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; for my blogging, but I decided before I got &lt;em&gt;too&lt;/em&gt; into things that I should consider switching to something else. The main reason for me was some concern around performance. I chose Jekyll not really realizing that there were competitors in the static-HTML-generation game. I knew that Jekyll was used for &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;, and I just assumed that was what got used everywhere.&lt;/p&gt;
+
+&lt;p&gt;Then I happened to see an article on using &lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;VSCode&lt;/a&gt; to generate a Hugo site. Having never heard of Hugo, I dug into it a little and discovered that it&amp;rsquo;s basically a Jekyll competitor written in Go rather than Ruby. This offers some advantages, the biggest of which is that it&amp;rsquo;s a &lt;strong&gt;lot&lt;/strong&gt; faster. While I love Ruby &amp;ndash; I think it&amp;rsquo;s one of the most enjoyable programming languages to write in &amp;ndash; it&amp;rsquo;s hard to deny that there can be some performance issues with large projects&amp;hellip; just launch &lt;a href=&#34;http://www.metasploit.com/&#34;&gt;Metasploit&lt;/a&gt; and see how the wait time is.&lt;/p&gt;
+
+&lt;p&gt;I did a bit of hunting to see what &lt;em&gt;else&lt;/em&gt; was out there on top of Jekyll and Hugo. It turns out there are &lt;a href=&#34;http://www.sitepoint.com/6-static-blog-generators-arent-jekyll/&#34;&gt;quite a few options&lt;/a&gt;. Looking into it, though, Hugo seems to be one most focused on performance. A few people with more dedication than me have done some &lt;a href=&#34;http://fredrikloch.me/post/2014-08-12-Jekyll-and-its-alternatives-from-a-site-generation-point-of-view/&#34;&gt;fairly exhaustive testing&lt;/a&gt; to confirm that while Jekyll may eventually start to lag with regard to build times for a site, Hugo crushes it&amp;hellip; though newer versions are slightly slower than the old ones. As someone who can potentially blog quite frequently I didn&amp;rsquo;t want to invest too much of my time and effort into a Jekyll site only to struggle with migrating the content to something else later on if I started to see performance issues.&lt;/p&gt;
+
+&lt;p&gt;##Implementation
+Using Hugo was fairly straightforward. I already had a server running Nginx that I wanted to use, so I just had to &lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;download the binaries for Hugo&lt;/a&gt;. I placed them in my &lt;code&gt;PATH&lt;/code&gt; for the sake of sanity. I&amp;rsquo;ll just have to keep an eye on their releases on GitHub to see when there are updates. Building a new Hugo site is stupidly easy. I just created a directory where I wanted to store everything and then used the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new site .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This gave me the skeleton struction that I needed. Next up, I wanted to get a theme rolling. After looking through the available themes, I settled on &lt;a href=&#34;https://github.com/zyro/hyde-x&#34;&gt;Hyde-x&lt;/a&gt;. The README for it was awesome enough to give a very thorough rundown of what options are available for my &lt;code&gt;config.toml&lt;/code&gt; file, so I leveraged that template to fill out my own information. I thought the MD5 hash of my Gravatar email address to import my avatars from there was a neat touch. Adding a new post was also a simple matter by running the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new post/test.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This creates a brand new post Markdown file for me, complete with the skeleton structure of the front matter that I needed. After fiddling with it, I was able to build my site with a test post:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That publishes all of the content to the &lt;strong&gt;public&lt;/strong&gt; folder. I actually don&amp;rsquo;t need it there since I&amp;rsquo;m not going to use Hugo as the web server; that&amp;rsquo;s what Nginx is for. So I just copied the contents of &lt;strong&gt;public&lt;/strong&gt; to where my Nginx instance is reading from. I saw that there&amp;rsquo;s a &lt;code&gt;destination&lt;/code&gt; parameter in the &lt;a href=&#34;http://gohugo.io/overview/configuration/&#34;&gt;configuration options&lt;/a&gt;, so I don&amp;rsquo;t necessarily need to worry about that step going forward. I&amp;rsquo;ve been having difficulty getting it to work properly, though, as everything continues to get pushed to my &lt;strong&gt;public&lt;/strong&gt; folder. I&amp;rsquo;ll need to do some additional research to see if I&amp;rsquo;m not understanding it properly. If nothing else, though, this gives me the option of previewing new content by serving it up via Hugo before pushing it to Nginx.&lt;/p&gt;
+
+&lt;p&gt;Having successfully published a post, I wanted to migrate just a couple of my old Jekyll posts over. That basically only involved changing the front matter format since I wanted to use TOML rather than YAML. After reconciling that, though, everything rebuilt without any issues. Long live Hugo!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PowerShell Reference Types And Value Types</title>
+      <link>http://mads.ninja/post/powershell-references/</link>
+      <pubDate>Fri, 26 Jun 2015 15:29:00 +0000</pubDate>
+      
+      <guid>http://mads.ninja/post/powershell-references/</guid>
+      <description>&lt;p&gt;A coworker and I ran into something of an oddity yesterday that started the snowball rolling on some research digging into the guts of how PowerShell operates as a langauge. Let me say up front that, with as much as Microsoft is working to make PowerShell the de facto scripting language on Windows, it&amp;rsquo;s both surprising and frustrating how little is published in the way of official documentation. While there&amp;rsquo;s a lot of good stuff people are writing it&amp;rsquo;s always in blogs of Stack Overflow discussions. Microsoft doesn&amp;rsquo;t, at least at the time of this writing, have any official documentation like what I&amp;rsquo;d reference for &lt;a href=&#34;http://ruby-doc.org/core-2.2.1/&#34;&gt;Ruby&lt;/a&gt; or &lt;a href=&#34;http://perldoc.perl.org/perlapi.html&#34;&gt;Perl&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The behavior which kicked off our confusion was how PowerShell handles passing parameters to functions. Take this very simple example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function Test
+{
+    param($Value)
+    $Value *= 2
+}
+
+$number = 3
+Test -Value $number
+$number
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output of this is just 3. The reason is that when I pass &lt;strong&gt;$number&lt;/strong&gt; to the &lt;strong&gt;Test&lt;/strong&gt; function, it&amp;rsquo;s a &lt;em&gt;copy&lt;/em&gt; of the value. Thus &lt;strong&gt;$number&lt;/strong&gt; never changes. The behavior is different, however, when I pass an object. Take this example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function Test
+{
+    param($Value)
+    $Value.Add(&amp;quot;Hello!&amp;quot;)
+}
+
+$something = New-Object System.Collections.ArrayList
+Test -Value $something
+$something
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The value printed to the screen here is &amp;ldquo;Hello!&amp;rdquo;. The difference is that &lt;strong&gt;$something&lt;/strong&gt; is being modified eventhough it&amp;rsquo;s being passed to the function. That clearly &lt;em&gt;doesn&amp;rsquo;t&lt;/em&gt; happen when passing a non-object. What gives?&lt;/p&gt;
+
+&lt;p&gt;After quite a bit of digging, I failed miserably at finding anything of substance about this topic as it relates to PowerShell. That being said, I was able to find some very &lt;em&gt;good&lt;/em&gt; information on the topic as it relates to C#, the language used to create PowerShell. In particular this &lt;a href=&#34;http://stackoverflow.com/questions/23041297/why-are-objects-automatically-passed-by-reference&#34;&gt;Stack Overflow&lt;/a&gt; thread and this &lt;a href=&#34;http://www.yoda.arachsys.com/csharp/parameters.html&#34;&gt;article&lt;/a&gt; really helped to clear things up for me.&lt;/p&gt;
+
+&lt;p&gt;If you want the super detailed explanation, read the content at those links. If you want the short version, however, read on. In C# there are two main sorts of variables: value types and reference types. For value type variables, the value of the variable is the data itself. In my first example, &lt;strong&gt;$number&lt;/strong&gt; is a value type, and that means the value of it is 3. Reference types are different. For anything which is a reference type, the value of the variable is a &lt;em&gt;reference&lt;/em&gt; to the data. So in my second example, &lt;strong&gt;$something&lt;/strong&gt; has a value which is simply a reference to where the ArrayList lives. That&amp;rsquo;s why passing &lt;strong&gt;$something&lt;/strong&gt; to a function changes what &lt;strong&gt;$something&lt;/strong&gt; actually contains; it&amp;rsquo;s a reference that is being passed and the original data is being changed!&lt;/p&gt;
+
+&lt;p&gt;To simplify this a bit I can take functions out of the equation entirely. Consider the following example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$first = New-Object System.Collections.ArrayList
+$second = $first
+$second.Add(&amp;quot;Hello!&amp;quot;)
+$first
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output of this is &amp;ldquo;Hello!&amp;rdquo;. When I set &lt;strong&gt;$second&lt;/strong&gt; equal to &lt;strong&gt;$first&lt;/strong&gt;, I&amp;rsquo;m setting &lt;strong&gt;$second&lt;/strong&gt; equal to the reference to where the data of &lt;strong&gt;$first&lt;/strong&gt; lives. Since &lt;strong&gt;$first&lt;/strong&gt; and &lt;strong&gt;$second&lt;/strong&gt; both reference the &lt;em&gt;same thing&lt;/em&gt;, adding new data to &lt;strong&gt;$second&lt;/strong&gt; means that &lt;strong&gt;$first&lt;/strong&gt; is now different as well!&lt;/p&gt;
+
+&lt;p&gt;After realizing that this is how C# functions, it makes &lt;em&gt;much&lt;/em&gt; more sense why PowerShell behaves the way it does. As a further test, I wanted to see if I could emulate the same behavior in PowerShell by using the &lt;code&gt;ref&lt;/code&gt; keyword that C# leverages to pass primitives as references. Sure enough, that&amp;rsquo;s possible as well:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function Test
+{
+    param([ref]$Value)
+    $Value.Value *= 2
+}
+
+$number = 3
+Test -Value ([ref]$number)
+$number
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Executing this gives me a value of 6. By using the &lt;code&gt;ref&lt;/code&gt; keyword, I&amp;rsquo;m able to pass a reference to the function just like I would in C#. Thus the actual data stored by what &lt;strong&gt;$number&lt;/strong&gt; references is now changed. Note that when performing the operation inside of my function, however, I can&amp;rsquo;t just do that against &lt;strong&gt;$Value&lt;/strong&gt;. The reason for this is that &lt;strong&gt;$Value&lt;/strong&gt; is &lt;em&gt;only a reference&lt;/em&gt;. If I want to do something against its data, I need to act on it&amp;rsquo;s &lt;strong&gt;Value&lt;/strong&gt; property.&lt;/p&gt;
+
+&lt;p&gt;Hopefully someone else stumbles across this post and is saved from having to spend a bit of time hunting for an explanation if they notice the same behavior in PowerShell that we did.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Error Installing Jekyll Gem: Can&#39;t Find Header Files</title>
+      <link>http://mads.ninja/post/ruby-error/</link>
+      <pubDate>Wed, 24 Jun 2015 11:35:00 +0000</pubDate>
+      
+      <guid>http://mads.ninja/post/ruby-error/</guid>
+      <description>&lt;p&gt;As you may be able to tell at a quick glance, I &lt;em&gt;just&lt;/em&gt; configured this blog that I have running on a VPS I spun up bright and early this morning. One of the things I wanted to do was get nginx rolling on it and then install Jekyll to do a bit of blogging. While the nginx setup went incredibly smoothly, I started to run into a couple of hiccups when installing the Jekyll gem. Note that I&amp;rsquo;m doing this from a Debian 8 VM.&lt;/p&gt;
+
+&lt;p&gt;After installing Ruby, since Debian doesn&amp;rsquo;t have it by default, I ran the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It caught me off guard that this threw an error:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;john@mads:~$ sudo gem install jekyll
+Building native extensions.  This could take a while&amp;hellip;
+ERROR:  Error installing jekyll:
+        ERROR: Failed to build gem native extension.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/usr/bin/ruby2.1 extconf.rb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;mkmf.rb can&amp;rsquo;t find header files for ruby at /usr/lib/ruby/include/ruby.h&lt;/p&gt;
+
+&lt;p&gt;extconf failed, exit code 1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Yeah, that&amp;rsquo;s not what I wanted. I did some searches for this error and most of them were from folks using OS X where the problem was that Ruby couldn&amp;rsquo;t find &lt;strong&gt;make&lt;/strong&gt;. Since I actually didn&amp;rsquo;t have &lt;strong&gt;make&lt;/strong&gt; installed, either, I went ahead and put the full software compilation package on my VPS:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install build-essential
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that I did have &lt;strong&gt;make&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;which make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sadly, trying to install Jekyll still gave me the same error. I continued digging through various help forums and StackOverflow posts before finally stumbling across one that said you need the Ruby developer tools to install Jekyll. I threw that package on my VPS next:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install ruby-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sure enough, after that installing Jekyll completed without any issues. So if you&amp;rsquo;re trying to get Jekyll up and running on Debian (or presumably one of its derivatives like Ubuntu or Mint) but you&amp;rsquo;re seeing the error above, make sure you&amp;rsquo;ve got the Ruby developer tools installed first.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

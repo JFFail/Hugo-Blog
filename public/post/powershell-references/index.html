@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>PowerShell Reference Types And Value Types &middot; John Fabry</title>
+
+  
+  <link rel="stylesheet" href="http://mads.ninja/css/poole.css">
+  <link rel="stylesheet" href="http://mads.ninja/css/hyde.css">
+  <link rel="stylesheet" href="http://mads.ninja/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://mads.ninja/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://mads.ninja/css/hyde-x.css">
+  <link rel="stylesheet" href="http://mads.ninja/css/highlight/github.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://mads.ninja/apple-touch-icon-144-precomposed.png">
+  <link href="http://mads.ninja/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Breaking down PowerShell&#39;s reference types and value types.">
+  <meta name="keywords" content="PowerShell, reference, value, type">
+  
+</head>
+<body class=".theme-base-0d">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <img src="https://www.gravatar.com/avatar/78923244486184ab65247b98806e32f5%20%20-?s=200" alt="gravatar">
+      <h1>John Fabry</h1>
+      <p class="lead">Keeping IT Real On The CLI</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://mads.ninja/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/jffail"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      <a href="https://www.linkedin.com/in/johnfabry"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="http://plus.google.com/&#43;JohnFabry404"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      
+      <a href="https://twitter.com/consoleaccess"><i class="fa fa-twitter-square fa-3x"></i></a>
+      </li>
+    </ul>
+
+    <p>Copyright &copy; 2015 <a href="http://mads.ninja/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>PowerShell Reference Types And Value Types</h1>
+    <span class="post-date">Jun 26, 2015 &middot; 4 minute read
+    
+    <br/>
+    <a class="label" href="http://mads.ninja/categories/scripting">Scripting</a><a class="label" href="http://mads.ninja/categories/programming">Programming</a>
+    </span>
+    <p>A coworker and I ran into something of an oddity yesterday that started the snowball rolling on some research digging into the guts of how PowerShell operates as a langauge. Let me say up front that, with as much as Microsoft is working to make PowerShell the de facto scripting language on Windows, it&rsquo;s both surprising and frustrating how little is published in the way of official documentation. While there&rsquo;s a lot of good stuff people are writing it&rsquo;s always in blogs of Stack Overflow discussions. Microsoft doesn&rsquo;t, at least at the time of this writing, have any official documentation like what I&rsquo;d reference for <a href="http://ruby-doc.org/core-2.2.1/">Ruby</a> or <a href="http://perldoc.perl.org/perlapi.html">Perl</a>.</p>
+
+<p>The behavior which kicked off our confusion was how PowerShell handles passing parameters to functions. Take this very simple example:</p>
+
+<pre><code>function Test
+{
+    param($Value)
+    $Value *= 2
+}
+
+$number = 3
+Test -Value $number
+$number
+</code></pre>
+
+<p>The output of this is just 3. The reason is that when I pass <strong>$number</strong> to the <strong>Test</strong> function, it&rsquo;s a <em>copy</em> of the value. Thus <strong>$number</strong> never changes. The behavior is different, however, when I pass an object. Take this example:</p>
+
+<pre><code>function Test
+{
+    param($Value)
+    $Value.Add(&quot;Hello!&quot;)
+}
+
+$something = New-Object System.Collections.ArrayList
+Test -Value $something
+$something
+</code></pre>
+
+<p>The value printed to the screen here is &ldquo;Hello!&rdquo;. The difference is that <strong>$something</strong> is being modified eventhough it&rsquo;s being passed to the function. That clearly <em>doesn&rsquo;t</em> happen when passing a non-object. What gives?</p>
+
+<p>After quite a bit of digging, I failed miserably at finding anything of substance about this topic as it relates to PowerShell. That being said, I was able to find some very <em>good</em> information on the topic as it relates to C#, the language used to create PowerShell. In particular this <a href="http://stackoverflow.com/questions/23041297/why-are-objects-automatically-passed-by-reference">Stack Overflow</a> thread and this <a href="http://www.yoda.arachsys.com/csharp/parameters.html">article</a> really helped to clear things up for me.</p>
+
+<p>If you want the super detailed explanation, read the content at those links. If you want the short version, however, read on. In C# there are two main sorts of variables: value types and reference types. For value type variables, the value of the variable is the data itself. In my first example, <strong>$number</strong> is a value type, and that means the value of it is 3. Reference types are different. For anything which is a reference type, the value of the variable is a <em>reference</em> to the data. So in my second example, <strong>$something</strong> has a value which is simply a reference to where the ArrayList lives. That&rsquo;s why passing <strong>$something</strong> to a function changes what <strong>$something</strong> actually contains; it&rsquo;s a reference that is being passed and the original data is being changed!</p>
+
+<p>To simplify this a bit I can take functions out of the equation entirely. Consider the following example:</p>
+
+<pre><code>$first = New-Object System.Collections.ArrayList
+$second = $first
+$second.Add(&quot;Hello!&quot;)
+$first
+</code></pre>
+
+<p>The output of this is &ldquo;Hello!&rdquo;. When I set <strong>$second</strong> equal to <strong>$first</strong>, I&rsquo;m setting <strong>$second</strong> equal to the reference to where the data of <strong>$first</strong> lives. Since <strong>$first</strong> and <strong>$second</strong> both reference the <em>same thing</em>, adding new data to <strong>$second</strong> means that <strong>$first</strong> is now different as well!</p>
+
+<p>After realizing that this is how C# functions, it makes <em>much</em> more sense why PowerShell behaves the way it does. As a further test, I wanted to see if I could emulate the same behavior in PowerShell by using the <code>ref</code> keyword that C# leverages to pass primitives as references. Sure enough, that&rsquo;s possible as well:</p>
+
+<pre><code>function Test
+{
+    param([ref]$Value)
+    $Value.Value *= 2
+}
+
+$number = 3
+Test -Value ([ref]$number)
+$number
+</code></pre>
+
+<p>Executing this gives me a value of 6. By using the <code>ref</code> keyword, I&rsquo;m able to pass a reference to the function just like I would in C#. Thus the actual data stored by what <strong>$number</strong> references is now changed. Note that when performing the operation inside of my function, however, I can&rsquo;t just do that against <strong>$Value</strong>. The reason for this is that <strong>$Value</strong> is <em>only a reference</em>. If I want to do something against its data, I need to act on it&rsquo;s <strong>Value</strong> property.</p>
+
+<p>Hopefully someone else stumbles across this post and is saved from having to spend a bit of time hunting for an explanation if they notice the same behavior in PowerShell that we did.</p>
+
+  </div>
+  
+</div>
+
+
+
+
+<script src="http://mads.ninja/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
