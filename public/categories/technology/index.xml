@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Technology on Awk Ninja</title>
-    <link>http://blog.awk.ninja/categories/technology/</link>
-    <description>Recent content in Technology on Awk Ninja</description>
+    <title>Technology on John Fabry</title>
+    <link>https://johnfabry.azurewebsites.net/categories/technology/</link>
+    <description>Recent content in Technology on John Fabry</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Jul 2015 16:30:53 +0000</lastBuildDate>
-    <atom:link href="http://blog.awk.ninja/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://johnfabry.azurewebsites.net/categories/technology/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Using Hugo</title>
-      <link>http://blog.awk.ninja/2015/07/12/using-hugo</link>
+      <link>https://johnfabry.azurewebsites.net/2015/07/12/using-hugo</link>
       <pubDate>Sun, 12 Jul 2015 16:30:53 +0000</pubDate>
       
-      <guid>http://blog.awk.ninja/2015/07/12/using-hugo</guid>
+      <guid>https://johnfabry.azurewebsites.net/2015/07/12/using-hugo</guid>
       <description>
 
 &lt;h2 id=&#34;background:f289f7106c21a975bb9cbd3325d6b48b&#34;&gt;Background&lt;/h2&gt;
@@ -50,10 +50,10 @@
     
     <item>
       <title>Error Installing Jekyll Gem: Can&#39;t Find Header Files</title>
-      <link>http://blog.awk.ninja/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</link>
+      <link>https://johnfabry.azurewebsites.net/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</link>
       <pubDate>Wed, 24 Jun 2015 11:35:00 +0000</pubDate>
       
-      <guid>http://blog.awk.ninja/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</guid>
+      <guid>https://johnfabry.azurewebsites.net/2015/06/24/error-installing-jekyll-gem-cant-find-header-files</guid>
       <description>&lt;p&gt;As you may be able to tell at a quick glance, I &lt;em&gt;just&lt;/em&gt; configured this blog that I have running on a VPS I spun up bright and early this morning. One of the things I wanted to do was get nginx rolling on it and then install Jekyll to do a bit of blogging. While the nginx setup went incredibly smoothly, I started to run into a couple of hiccups when installing the Jekyll gem. Note that I&amp;rsquo;m doing this from a Debian 8 VM.&lt;/p&gt;
 
 &lt;p&gt;After installing Ruby, since Debian doesn&amp;rsquo;t have it by default, I ran the following:&lt;/p&gt;

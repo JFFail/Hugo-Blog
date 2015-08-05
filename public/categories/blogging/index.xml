@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogging on Awk Ninja</title>
-    <link>http://blog.awk.ninja/categories/blogging/</link>
-    <description>Recent content in Blogging on Awk Ninja</description>
+    <title>Blogging on John Fabry</title>
+    <link>https://johnfabry.azurewebsites.net/categories/blogging/</link>
+    <description>Recent content in Blogging on John Fabry</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Jul 2015 16:30:53 +0000</lastBuildDate>
-    <atom:link href="http://blog.awk.ninja/categories/blogging/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://johnfabry.azurewebsites.net/categories/blogging/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Using Hugo</title>
-      <link>http://blog.awk.ninja/2015/07/12/using-hugo</link>
+      <link>https://johnfabry.azurewebsites.net/2015/07/12/using-hugo</link>
       <pubDate>Sun, 12 Jul 2015 16:30:53 +0000</pubDate>
       
-      <guid>http://blog.awk.ninja/2015/07/12/using-hugo</guid>
+      <guid>https://johnfabry.azurewebsites.net/2015/07/12/using-hugo</guid>
       <description>
 
 &lt;h2 id=&#34;background:f289f7106c21a975bb9cbd3325d6b48b&#34;&gt;Background&lt;/h2&gt;
