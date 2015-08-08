@@ -6,8 +6,34 @@
     <description>Recent content on John Fabry</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jul 2015 16:30:53 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2015 20:46:19 -0400</lastBuildDate>
     <atom:link href="https://johnfabry.azurewebsites.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Using Jekyll Or Hugo To Blog To Azure Web Apps</title>
+      <link>https://johnfabry.azurewebsites.net/2015/08/07/using-jekyll-or-hugo-to-blog-to-azure-web-apps</link>
+      <pubDate>Fri, 07 Aug 2015 20:46:19 -0400</pubDate>
+      
+      <guid>https://johnfabry.azurewebsites.net/2015/08/07/using-jekyll-or-hugo-to-blog-to-azure-web-apps</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s far from impressive, but recently I&amp;rsquo;ve been using some of my free Azure hosting via Dreamspark for this blog. The &lt;a href=&#34;http://azure.microsoft.com/en-us/pricing/details/app-service/&#34;&gt;free tier&lt;/a&gt; isn&amp;rsquo;t exactly impressive, but it&amp;rsquo;s not too bad for just messing around with Azure a bit and learning; I&amp;rsquo;m pretty sure learning is really what the free tier is intended for regardless. Since I&amp;rsquo;ve had plenty of time to get my hands on a lot of the IaaS and SaaS offerings in Azure, I figured I needed to step things up in the PaaS department.&lt;/p&gt;
+
+&lt;p&gt;Rather than just hosting my own HTML files like I do &lt;a href=&#34;http://awk.ninja&#34;&gt;on GitHub&lt;/a&gt;, though, I wanted to see about using something like &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; or &lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt; to parse together a static HTML blog that could be hosted out of Azure. I&amp;rsquo;m already familiar with both frameworks &lt;a href=&#34;http://failtime.freeshell.org&#34;&gt;from SDF&lt;/a&gt;, and I&amp;rsquo;m a &lt;em&gt;huge&lt;/em&gt; fan. Being able to so easily create static HTML blogs is &lt;strong&gt;incredible&lt;/strong&gt;, and I can&amp;rsquo;t give enough credit to the teams behind these projects. Plus, they seemed like a perfect fit considering that Azure Web Apps allow you to do &lt;a href=&#34;https://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/&#34;&gt;continuous deployment via Git&lt;/a&gt;. So in my case I can link my Azure Web App to a GitHub repository. Then whenever I push a change to that repo, it&amp;rsquo;ll automatically load in Azure. Cool!&lt;/p&gt;
+
+&lt;p&gt;The hiccup I ran into is that, by default, when you link an Azure Web App to a Git repository Azure wants to serve up the &lt;em&gt;root&lt;/em&gt; of that repository. In my case that was problematic because the root of it was the root of &lt;a href=&#34;https://github.com/JFFail/Hugo-Blog&#34;&gt;my Hugo directory&lt;/a&gt;; the HTML files I wanted to be hosted were in the &lt;code&gt;/public&lt;/code&gt; directory. After a little bit of searching, I learned that &lt;a href=&#34;https://github.com/projectkudu/kudu&#34;&gt;Kudu&lt;/a&gt; is the answer to this. Kudu is the engine behind Git deployments in Azure. You can create a file in the root of your repository called &lt;code&gt;.deployment&lt;/code&gt; and use that to tell Kudu where to look for the files to host. It seems to use TOML for the markup, which is great since that&amp;rsquo;s what I&amp;rsquo;ve been using for Hugo as well. The only things I added to my deployment file were:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[config]
+project = public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This lets Kudu know that when it goes to host the content in my repository it should be looking in the &lt;code&gt;public&lt;/code&gt; folder rather than in the root. I also temporarily flipped which repository my Azure Web App was looking at to test it out with &lt;a href=&#34;https://github.com/JFFail/Blog&#34;&gt;this Jekyll repo&lt;/a&gt;. Things also worked perfectly with Jekyll; I just had to modify my deployment file to take into account the default folder where Jekyll wants to publish HTML:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[config]
+project = _site
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I have no doubt there are a &lt;em&gt;ton&lt;/em&gt; of other things you can do with Kudu to further customize Git deployments in Azure. I was just geeked, though, to be able to do precisely what I wanted with so little effort.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Using Hugo</title>
