@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Using Jekyll Or Hugo To Blog To Azure Web Apps &middot; John Fabry</title>
+
+  
+  <link rel="stylesheet" href="https://johnfabry.azurewebsites.net/css/poole.css">
+  <link rel="stylesheet" href="https://johnfabry.azurewebsites.net/css/hyde.css">
+  <link rel="stylesheet" href="https://johnfabry.azurewebsites.net/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://johnfabry.azurewebsites.net/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://johnfabry.azurewebsites.net/css/hyde-x.css">
+  <link rel="stylesheet" href="https://johnfabry.azurewebsites.net/css/highlight/github.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://johnfabry.azurewebsites.net/touch-icon-144-precomposed.png">
+  <link href="https://johnfabry.azurewebsites.net/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Using Jekyll or Hugo for a static HTML blog to Azure Web Apps.">
+  <meta name="keywords" content="Hugo,Jekyll,Azure,Web Apps">
+  
+</head>
+<body class=".theme-base-0d">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <img src="https://www.gravatar.com/avatar/78923244486184ab65247b98806e32f5%20%20-?s=200" alt="gravatar">
+      <h1>John Fabry</h1>
+      <p class="lead">Keeping IT Real On The CLI</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://johnfabry.azurewebsites.net/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/jffail"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      <a href="https://www.linkedin.com/in/johnfabry"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="http://plus.google.com/&#43;JohnFabry404"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      
+      <a href="https://twitter.com/consoleaccess"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    <p>Copyright &copy; 2015 <a href="https://johnfabry.azurewebsites.net/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Using Jekyll Or Hugo To Blog To Azure Web Apps</h1>
+    <span class="post-date">Aug 7, 2015 &middot; 3 minute read
+    
+    <br/>
+    <a class="label" href="https://johnfabry.azurewebsites.net/categories/technology">Technology</a>
+    </span>
+    <p>It&rsquo;s far from impressive, but recently I&rsquo;ve been using some of my free Azure hosting via Dreamspark for this blog. The <a href="http://azure.microsoft.com/en-us/pricing/details/app-service/">free tier</a> isn&rsquo;t exactly impressive, but it&rsquo;s not too bad for just messing around with Azure a bit and learning; I&rsquo;m pretty sure learning is really what the free tier is intended for regardless. Since I&rsquo;ve had plenty of time to get my hands on a lot of the IaaS and SaaS offerings in Azure, I figured I needed to step things up in the PaaS department.</p>
+
+<p>Rather than just hosting my own HTML files like I do <a href="http://awk.ninja">on GitHub</a>, though, I wanted to see about using something like <a href="https://gohugo.io">Hugo</a> or <a href="http://jekyllrb.com">Jekyll</a> to parse together a static HTML blog that could be hosted out of Azure. I&rsquo;m already familiar with both frameworks <a href="http://failtime.freeshell.org">from SDF</a>, and I&rsquo;m a <em>huge</em> fan. Being able to so easily create static HTML blogs is <strong>incredible</strong>, and I can&rsquo;t give enough credit to the teams behind these projects. Plus, they seemed like a perfect fit considering that Azure Web Apps allow you to do <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/">continuous deployment via Git</a>. So in my case I can link my Azure Web App to a GitHub repository. Then whenever I push a change to that repo, it&rsquo;ll automatically load in Azure. Cool!</p>
+
+<p>The hiccup I ran into is that, by default, when you link an Azure Web App to a Git repository Azure wants to serve up the <em>root</em> of that repository. In my case that was problematic because the root of it was the root of <a href="https://github.com/JFFail/Hugo-Blog">my Hugo directory</a>; the HTML files I wanted to be hosted were in the <code>/public</code> directory. After a little bit of searching, I learned that <a href="https://github.com/projectkudu/kudu">Kudu</a> is the answer to this. Kudu is the engine behind Git deployments in Azure. You can create a file in the root of your repository called <code>.deployment</code> and use that to tell Kudu where to look for the files to host. It seems to use TOML for the markup, which is great since that&rsquo;s what I&rsquo;ve been using for Hugo as well. The only things I added to my deployment file were:</p>
+
+<pre><code>[config]
+project = public
+</code></pre>
+
+<p>This lets Kudu know that when it goes to host the content in my repository it should be looking in the <code>public</code> folder rather than in the root. I also temporarily flipped which repository my Azure Web App was looking at to test it out with <a href="https://github.com/JFFail/Blog">this Jekyll repo</a>. Things also worked perfectly with Jekyll; I just had to modify my deployment file to take into account the default folder where Jekyll wants to publish HTML:</p>
+
+<pre><code>[config]
+project = _site
+</code></pre>
+
+<p>I have no doubt there are a <em>ton</em> of other things you can do with Kudu to further customize Git deployments in Azure. I was just geeked, though, to be able to do precisely what I wanted with so little effort.</p>
+
+  </div>
+  
+</div>
+
+
+
+
+<script src="https://johnfabry.azurewebsites.net/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

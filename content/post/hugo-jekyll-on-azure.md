@@ -3,6 +3,7 @@ categories = ["Technology"]
 date = "2015-08-07T20:46:19-04:00"
 description = "Using Jekyll or Hugo for a static HTML blog to Azure Web Apps."
 title = "Using Jekyll Or Hugo To Blog To Azure Web Apps"
+keywords = ["Hugo", "Jekyll", "Azure", "Web Apps"]
 
 +++
 
